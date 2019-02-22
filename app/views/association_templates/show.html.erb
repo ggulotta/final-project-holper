@@ -1,0 +1,102 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      NLP Match #<%= @association.id %> Details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+      <form action="/update_association/<%= @association.id %>" method="post">
+        
+        Confirm Request/PubMED Association? <%= check_box_tag :confirm , 1 , @association.confirm ? true : false %>
+        
+        <button class="btn btn-sm btn-default">
+        Update
+        </button>
+      </form>
+      </div>
+    </div>
+    
+<div class="card">
+  <div class="card-header">
+    Requestor Info
+  </div>
+  <div class="card-body">
+       <dl class="row">
+          <dt class="col-sm-2">Last Name:<dt>
+          <dd class="col-sm-9"><%= @association.lname %></dd>
+          
+          <dt class="col-sm-2">First Name:<dt>
+          <dd class="col-sm-9"><%= @association.fname %></dd>
+        </dl>
+  </div>
+</div>  
+
+<div class="card">
+  <div class="card-header">
+    Request Info
+  </div>
+  <div class="card-body">
+       <dl class="row">
+          <dt class="col-sm-3">Request ID:<dt>
+          <dd class="col-sm-9"><%= @association.request_id %></dd>
+          
+          <dt class="col-sm-3">Request Date:<dt>
+          <dd class="col-sm-9">
+              <% if @association.req_date != nil %>
+                <%= @association.req_date.to_date.strftime("%m/%d/%Y") %>
+              <% end %>
+          </dd>
+          
+          <dt class="col-sm-3">Request Title:<dt>
+          <dd class="col-sm-9"><%= @association.req_title %></dd>          
+        </dl>
+  </div>
+</div>
+     
+<div class="card">
+  <div class="card-header">
+    Publication Info
+  </div>
+  <div class="card-body">
+       <dl class="row">
+          <dt class="col-sm-3">PubMED ID:<dt>
+          <dd class="col-sm-9"><%= @association.publication_id %></dd>
+          
+          <dt class="col-sm-3">PubMED Title:<dt>
+          <dd class="col-sm-9"><%= @association.pubmed_title %></dd>      
+          
+          <dt class="col-sm-3">PubMED Date:<dt>
+          <dd class="col-sm-9">
+          <% if @association.pubmed_date != nil %>
+            <%= @association.pubmed_date.to_date.strftime("%m/%d/%Y") %>
+          <% end %>          
+          </dd> 
+          <dt class="col-sm-3">PubMED Narrative:<dt>
+          <dd class="col-sm-9"><%= @association.pubmed_narrative %></dd>                
+        </dl>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Suggested Match Results
+  </div>
+  <div class="card-body">
+       <dl class="row">
+          <dt class="col-sm-3">Similarity score:<dt>
+          <dd class="col-sm-9"><%= @association.similar_score %></dd>
+        
+        </dl>
+  </div>
+</div>
+
+        <div class="col">
+        <a href="/associations" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+  </div>
+</div>
+
+

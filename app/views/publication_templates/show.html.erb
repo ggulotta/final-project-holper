@@ -1,0 +1,69 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Publication #<%= @publication.id %> Details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/publications" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+    </div>
+
+    <dl>
+      <dt>
+        Customer
+      </dt>
+      <dd>
+            <%= Customer.find_by(id: @publication.customer_id).lname %>,
+            <%= Customer.find_by(id: @publication.customer_id).fname %>
+      </dd>
+
+      <dt>
+        PubMED ID
+      </dt>
+      <dd>
+        <%= @publication.id %>
+      </dd>
+
+      <dt>
+        PubMED Date
+      </dt>
+      <dd>
+        <%= @publication.pubmed_date.strftime("%m/%d/%Y") %>
+      </dd>
+      
+      <dt>
+        PubMED title
+      </dt>
+      <dd>
+        <%= @publication.pubmed_title %>
+      </dd>
+
+      <dt>
+        PubMED Narrative
+      </dt>
+      <dd>
+        <%= @publication.pubmed_narrative %>
+      </dd>
+      
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@publication.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@publication.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

@@ -1,0 +1,56 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Request #<%= @request.id %> Details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/requests" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+    </div>
+
+    <dl>
+      <dt>
+        Customer
+      </dt>
+      <dd>
+        <%= Customer.find_by(id: @request.customer_id).lname %>,
+        <%= Customer.find_by(id: @request.customer_id).fname %>
+      </dd>
+
+      <dt>
+        Request Title
+      </dt>
+      <dd>
+        <%= @request.req_title %>
+      </dd>
+      
+      <dt>
+        Request Date
+      </dt>
+      <dd>
+          <% if @request.req_date != nil %>
+            <%= @request.req_date.strftime("%m/%d/%Y") %>
+          <% end %>
+      </dd>      
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@request.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@request.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

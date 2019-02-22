@@ -1,0 +1,97 @@
+<div class="row mb-3">
+  <div class="col-md-10">
+    <h1>
+      NLP Matches
+    </h1>
+
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-10">
+    <table class="table table-bordered">
+      <tr>
+        <th>
+          Last Name
+        </th>
+
+        <th>
+          First Name
+        </th>
+        
+        <th>
+          Request ID
+        </th>
+
+        <th>
+          Request Date
+        </th>
+        
+        <th>
+          PubMED ID
+        </th>
+        
+        <th>
+          PubMED Date
+        </th>
+        
+        <th>
+          Similarity Score
+        </th>
+
+        <th>
+          Request/PubMED Association
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @associations.each do |association|  %>
+      <tr>
+        <td>
+        <%= association.lname %>
+        </td>
+
+        <td>
+          <%= association.fname %>
+        </td>
+        
+        <td>
+          <%= association.request_id %>
+        </td>
+        
+        <td>
+          <% if association.req_date != nil %>
+          <%= association.req_date.to_date.strftime("%m/%d/%Y") %>
+          <% end %>
+        </td>
+        
+        <td>
+          <%= association.publication_id %>
+        </td>
+
+        <td>
+          <% if association.pubmed_date != nil %>
+          <%= association.pubmed_date.to_date.strftime("%m/%d/%Y") %>
+          <% end %>
+        </td>
+
+        <td>
+          <%= association.similar_score %>
+        </td>
+
+        <td>
+          <%= association.confirm %>
+        </td>
+        
+        <td>
+          <a href="/associations/<%= association.id %>" class="btn btn-sm btn-link">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

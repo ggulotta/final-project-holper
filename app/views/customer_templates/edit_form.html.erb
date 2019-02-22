@@ -1,0 +1,50 @@
+<h1>
+  Edit customer #<%= @customer.id %>
+</h1>
+
+<hr>
+
+<form action="/update_customer/<%= @customer.id %>" method="post">
+
+  <div class="form-group">
+    <label for="fname">
+      First Name
+    </label>
+
+    <input type="text" id="fname" name="fname" class="form-control" value="<%= @customer.fname %>">
+  </div>
+
+  <div class="form-group">
+    <label for="lname">
+      Last Name
+    </label>
+
+    <input type="text" id="lname" name="lname" class="form-control" value="<%= @customer.lname %>">
+  </div>
+
+  <div class="form-group">
+    <label for="username">
+      Username
+    </label>
+
+    <input type="text" id="username" name="username" class="form-control" value="<%= @customer.username %>">
+  </div>
+
+  <div class="form-group">
+    <label for="email">
+      Email
+    </label>
+
+    <input type="text" id="email" name="email" class="form-control" value="<%= @customer.email %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update customer
+  </button>
+</form>
+
+<hr>
+
+<a href="/customers">
+  Go back
+</a>
